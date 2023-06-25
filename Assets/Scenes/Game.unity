@@ -944,6 +944,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AnswerButton (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8198416030445544504, guid: 549ac7ebcb2f64fc4b3574df8003ee00, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1081,6 +1085,10 @@ PrefabInstance:
     - target: {fileID: 5275466051161735971, guid: 549ac7ebcb2f64fc4b3574df8003ee00, type: 3}
       propertyPath: m_Name
       value: AnswerButton (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8198416030445544504, guid: 549ac7ebcb2f64fc4b3574df8003ee00, type: 3}
+      propertyPath: m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1534,6 +1542,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AnswerButton (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8198416030445544504, guid: 549ac7ebcb2f64fc4b3574df8003ee00, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1667,6 +1679,10 @@ PrefabInstance:
     - target: {fileID: 5275466051161735971, guid: 549ac7ebcb2f64fc4b3574df8003ee00, type: 3}
       propertyPath: m_Name
       value: AnswerButton (0)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8198416030445544504, guid: 549ac7ebcb2f64fc4b3574df8003ee00, type: 3}
+      propertyPath: m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
