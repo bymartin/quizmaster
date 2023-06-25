@@ -18,7 +18,7 @@ public class QuestionSO : ScriptableObject
         return correctAnswerIndex;
     }
 
-    public string GetAnwswer(int index) {
+    public string GetAnswer(int index) {
         return answers[index];
     }
 }
