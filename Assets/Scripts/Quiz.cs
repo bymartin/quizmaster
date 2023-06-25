@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class Quiz : MonoBehaviour
 {
@@ -15,12 +16,24 @@ public class Quiz : MonoBehaviour
 
     private void Start()
     {
+        DisplayQuestion();
+        // GetNextQuestion();
+    }
+
+    private void GetNextQuestion() {
+        SetButtonState(true);
+        SetDefaultButtonSprites();
+        DisplayQuestion();
+    }
+
+    private void DisplayQuestion()
+    {
         questionText.text = question.GetQuestion();
-        for(int i = 0; i < answerButtons.Length; i++) {
+        for (int i = 0; i < answerButtons.Length; i++)
+        {
             TextMeshProUGUI buttonText = answerButtons[i].GetComponentInChildren<TextMeshProUGUI>();
             buttonText.text = question.GetAnswer(i);
         }
-        
     }
 
     public void OnAnswerSelected(int index) {
@@ -35,6 +48,23 @@ public class Quiz : MonoBehaviour
             buttonImage = answerButtons[correctIndex].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
         }
+        SetButtonState(false);
     }
+
+    private void SetButtonState(bool state) {
+        for (int i = 0; i < answerButtons.Length; i++) {
+            Button button = answerButtons[i].GetComponent<Button>();
+            button.interactable = state;
+        }
+    }
+
+    private void SetDefaultButtonSprites() {
+        for (int i = 0; i < answerButtons.Length; i++) {
+            Image buttonImage = answerButtons[i].GetComponent<Image>();
+            buttonImage.sprite = defaultAnswerSprite;
+        }
+    }
+
+
 
 }
