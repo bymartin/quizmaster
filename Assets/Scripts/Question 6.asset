@@ -12,4 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a077e1a7d4334c35a13f02a5f624c8d, type: 3}
   m_Name: Question 6
   m_EditorClassIdentifier: 
-  question: Nintendo Began As A Company Selling Which Products?
+  question: In Mario Kart, the power-up that seeks out the player in first position
+    and explodes on impact is a shell that is what color?
+  answers:
+  - Red
+  - Green
+  - Yellow
+  - Blue
+  correctAnswerIndex: 3
