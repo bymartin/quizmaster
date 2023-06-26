@@ -7,17 +7,42 @@ using System;
 
 public class Quiz : MonoBehaviour
 {
+    [Header("Questions")]
     [SerializeField] TextMeshProUGUI questionText;
     [SerializeField] QuestionSO question;
+
+    [Header("Answers")]
     [SerializeField] GameObject[] answerButtons;
     int correctAnswerIndex;
+    bool hasAnsweredEarly;
+
+    [Header("Button Sprites")]
     [SerializeField] Sprite defaultAnswerSprite;
     [SerializeField] Sprite correctAnswerSprite;
 
+    [Header("Timer")]
+    [SerializeField] Image timerImage;
+    Timer timer;
+
     private void Start()
     {
-        DisplayQuestion();
-        // GetNextQuestion();
+        timer = FindObjectOfType<Timer>();
+        // DisplayQuestion();
+        GetNextQuestion();
+    }
+
+    private void Update() {
+        timerImage.fillAmount = timer.fillFraction;
+        if (timer.loadNextQuestion) {
+            hasAnsweredEarly = false;
+            GetNextQuestion();
+            timer.loadNextQuestion = false;
+        } else if (!hasAnsweredEarly && !timer.isAnsweringQuestion) {
+            // timer expired, no answer picked so show the answer
+            // value of -1 will force DisplayAnswer to else case
+            DisplayAnswer(-1);
+            SetButtonState(false);
+        }
     }
 
     private void GetNextQuestion() {
@@ -36,19 +61,30 @@ public class Quiz : MonoBehaviour
         }
     }
 
-    public void OnAnswerSelected(int index) {
+    public void OnAnswerSelected(int index)
+    {
+        hasAnsweredEarly = true;
+        DisplayAnswer(index);
+        SetButtonState(false);
+        timer.CancelTimer();
+    }
+
+    private void DisplayAnswer(int index)
+    {
         int correctIndex = question.GetCorrectAnswerIndex();
         Image buttonImage;
-        if (index == correctIndex) {
+        if (index == correctIndex)
+        {
             questionText.text = "Correct!";
             buttonImage = answerButtons[index].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
-        } else {
+        }
+        else
+        {
             questionText.text = "Sorry, the correct answer was:\n" + question.GetAnswer(correctIndex);
             buttonImage = answerButtons[correctIndex].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
         }
-        SetButtonState(false);
     }
 
     private void SetButtonState(bool state) {
