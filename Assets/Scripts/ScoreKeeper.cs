@@ -7,15 +7,23 @@ public class ScoreKeeper : MonoBehaviour
     int correctAnswers = 0;
     int questionsSeen = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public int GetCorrectAnswers() {
+        return correctAnswers;   
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void IncrementCorrectAnswers() {
+        correctAnswers++;
+    }
+
+    public int GetQuestionsSeen() {
+        return questionsSeen;
+    }
+
+    public void IncremementQuestionsSeen() {
+        questionsSeen++;
+    }
+
+    public int CalculateScore() {
+        return Mathf.RoundToInt(correctAnswers / (float)questionsSeen * 100);
     }
 }
